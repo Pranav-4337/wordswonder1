@@ -62,12 +62,27 @@ const initGame = (button, clickedLetter) => {
 }
 
 // Creating keyboard buttons and adding event listeners
-for (let i = 97; i <= 122; i++) {
-    const button = document.createElement("button");
-    button.innerText = String.fromCharCode(i);
-    keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
-}
+const keyboarddiv = document.querySelector(".keyboard");
+const keyboardLayout = [
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+    ["z", "x", "c", "v", "b", "n", "m"]
+];
+
+keyboardLayout.forEach(row => {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("keyboard-row");
+
+    row.forEach(char => {
+        const button = document.createElement("button");
+        button.innerText = char;
+        rowDiv.appendChild(button);
+        button.addEventListener("click", (e) => initGame(e.target, char));
+    });
+
+    keyboardDiv.appendChild(rowDiv);
+});
+
 
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
