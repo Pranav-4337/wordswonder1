@@ -138,6 +138,17 @@ body {
     background: #2b2b33;
     position: relative;
 }
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
 .keyboard button {
     padding: 7px;
     width: calc(100% / 9 - 5px);
